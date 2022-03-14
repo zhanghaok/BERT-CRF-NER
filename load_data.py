@@ -58,7 +58,7 @@ class NERDataset(tud.Dataset):
                     char , label = line.strip().split()
                     chars.append(char)
                     label_ids.append(label2idx[label])
-                else:#说明读取完毕
+                else:#说明一句话读读取完毕
                     input_ids = [tokenizer.convert_tokens_to_ids(c) for c in chars]
                     input_ids = [tokenizer.cls_token_id] + input_ids + [tokenizer.sep_token_id]
                     label_ids = [label2idx['O']] + label_ids + [label2idx['O']] #拼接上[CLS],[SEP]对应的label id
